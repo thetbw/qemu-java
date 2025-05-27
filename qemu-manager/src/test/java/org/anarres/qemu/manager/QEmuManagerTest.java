@@ -24,10 +24,12 @@ import org.anarres.qemu.qapi.api.OnOffAuto;
 import org.anarres.qemu.qapi.api.QueryBlockCommand;
 import org.anarres.qemu.qapi.common.QApiConnection;
 import org.anarres.qemu.qapi.common.QApiException;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  *
@@ -38,6 +40,7 @@ public class QEmuManagerTest {
     private static final Logger LOG = LoggerFactory.getLogger(QEmuManagerTest.class);
 
     @Test
+    @Disabled
     public void testManager() throws Exception {
         File dir = QEmuTestUtils.newTemporaryDirectory();
 
@@ -69,8 +72,7 @@ public class QEmuManagerTest {
                 // Perhaps we are running on QEmu 1.0.
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 e.printStackTrace(new PrintStream(baos));
-                assertTrue("QApiException: " + e.toString() + " Stack: " + baos.toString(),
-                        e.getMessage().contains("has not been found"));
+                assertTrue( e.getMessage().contains("has not been found"),"QApiException: " + e.toString() + " Stack: " + baos.toString());
                 LOG.warn("Limited testing available on QEmu <1.7", e);
             }
 

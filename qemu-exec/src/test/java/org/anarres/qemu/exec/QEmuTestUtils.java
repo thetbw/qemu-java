@@ -21,7 +21,8 @@ import org.anarres.qemu.qapi.common.QApiConnection;
 import org.anarres.qemu.qapi.common.QApiException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  *
@@ -78,7 +79,7 @@ public class QEmuTestUtils {
     }
 
     public static void inspect(@Nonnull QApiConnection connection) throws IOException, QApiException {
-        assertNotNull("Failed to connect to QEmu.", connection);
+        assertNotNull(connection,"Failed to connect to QEmu.");
 
         LOG.info("Commands are " + connection.call(new QueryCommandsCommand()));
         LOG.info("UUID is " + connection.call(new QueryUuidCommand()));

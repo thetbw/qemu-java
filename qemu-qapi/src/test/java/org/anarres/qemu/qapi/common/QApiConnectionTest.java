@@ -13,8 +13,8 @@ import org.anarres.qemu.qapi.api.QueryDumpGuestMemoryCapabilityCommand;
 import org.anarres.qemu.qapi.api.QueryEventsCommand;
 import org.anarres.qemu.qapi.api.QueryMigrateCapabilitiesCommand;
 import org.anarres.qemu.qapi.api.QueryStatusCommand;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author shevek
  */
-@Ignore // Needs to fire up a test QEmu.
+@Disabled // Needs to fire up a test QEmu.
 public class QApiConnectionTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(QApiConnectionTest.class);

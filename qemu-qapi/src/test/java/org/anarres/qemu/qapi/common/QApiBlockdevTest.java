@@ -16,8 +16,8 @@ import org.anarres.qemu.qapi.api.BlockdevOptionsRaw;
 import org.anarres.qemu.qapi.api.BlockdevRef;
 import org.anarres.qemu.qapi.api.OnOffAuto;
 import org.anarres.qemu.qapi.api.QueryBlockCommand;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author shevek
  */
-@Ignore
+@Disabled
 public class QApiBlockdevTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(QApiBlockdevTest.class);

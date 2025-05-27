@@ -23,7 +23,7 @@ import org.anarres.qemu.exec.recipe.QEmuVirtioSerialRecipe;
 import org.anarres.qemu.exec.recipe.QEmuVirtioDriveRecipe;
 import org.anarres.qemu.exec.recipe.QEmuVirtioNetRecipe;
 import org.anarres.qemu.image.QEmuImageFormat;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -34,7 +34,7 @@ public class QEmuRAIDExample extends AbstractQEmuExample {
 
     @Override
     public void invoke(String[] args) throws Exception {
-        QEmuImage root = newImage("root", URI.create("http://ubuntu.com/cloud.img"));
+        QEmuImage root = newImage("root", URI.create("https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img"));
         QEmuImage sdb = newImage("sdb", 1, QEmuMemoryOption.Magnitude.GIGA);
         QEmuImage sdc = newImage("sdc", 1, QEmuMemoryOption.Magnitude.GIGA);
 

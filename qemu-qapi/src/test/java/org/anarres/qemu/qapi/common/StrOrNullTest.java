@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
 import org.anarres.qemu.qapi.api.StrOrNull;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests to ensure the serialization of null Optionals is handled correctly.
@@ -26,7 +26,7 @@ public class StrOrNullTest {
 
         String output = CONFIGURED_MAPPER.writeValueAsString(s);
 
-        Assert.assertEquals("\"" + TEST_STRING + "\"", output);
+        Assertions.assertEquals("\"" + TEST_STRING + "\"", output);
     }
 
     @Test
@@ -40,11 +40,11 @@ public class StrOrNullTest {
          * The empty Optional must be explicitly serialized as "null" and not omitted per the QAPI.
          */
         final String NULL_STR = "null";
-        Assert.assertEquals(NULL_STR, out);
+        Assertions.assertEquals(NULL_STR, out);
     }
 
     @Test
-    @Ignore("Test is informational: demonstrate the result of not configuring ObjectMapper.")
+    @Disabled("Test is informational: demonstrate the result of not configuring ObjectMapper.")
     public void testNullSerializationWithBrokenMapper() throws JsonProcessingException {
         final ObjectMapper UNCONFIGURED_MAPPER = new ObjectMapper();
         final StrOrNull s = new StrOrNull();
@@ -52,6 +52,6 @@ public class StrOrNullTest {
 
         final String out = UNCONFIGURED_MAPPER.writeValueAsString(s);
 
-        Assert.assertEquals("{\"present\":false}", out);
+        Assertions.assertEquals("{\"present\":false}", out);
     }
 }
