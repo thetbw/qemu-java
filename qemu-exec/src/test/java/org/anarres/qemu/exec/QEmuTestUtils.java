@@ -7,16 +7,13 @@ package org.anarres.qemu.exec;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.lang.String;
 import javax.annotation.Nonnull;
 import org.anarres.qemu.exec.host.disk.FileDisk;
 import org.anarres.qemu.exec.recipe.QEmuMonitorRecipe;
 import org.anarres.qemu.exec.util.QEmuCommandLineUtils;
 import org.anarres.qemu.manager.QEmuProcess;
-import org.anarres.qemu.qapi.api.HumanMonitorCommandCommand;
-import org.anarres.qemu.qapi.api.QueryBlockCommand;
-import org.anarres.qemu.qapi.api.QueryCommandsCommand;
-import org.anarres.qemu.qapi.api.QueryCpusCommand;
-import org.anarres.qemu.qapi.api.QueryUuidCommand;
+import org.anarres.qemu.qapi.api.*;
 import org.anarres.qemu.qapi.common.QApiConnection;
 import org.anarres.qemu.qapi.common.QApiException;
 import org.slf4j.Logger;
@@ -83,7 +80,7 @@ public class QEmuTestUtils {
 
         LOG.info("Commands are " + connection.call(new QueryCommandsCommand()));
         LOG.info("UUID is " + connection.call(new QueryUuidCommand()));
-        LOG.info("CPUs is " + connection.call(new QueryCpusCommand()));
+        LOG.info("CPUs is " + connection.call(new QueryCpusFastCommand()));
         LOG.info("Blocks is " + connection.call(new QueryBlockCommand()));
         LOG.info(connection.call(new HumanMonitorCommandCommand("info status", null)));
         LOG.info(connection.call(new HumanMonitorCommandCommand("info qtree", null)));

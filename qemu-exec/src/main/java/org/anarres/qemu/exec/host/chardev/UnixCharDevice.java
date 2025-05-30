@@ -30,6 +30,10 @@ public class UnixCharDevice extends AbstractSocketCharDevice {
         m.put("path", file.getAbsolutePath());
     }
 
+    public File getFile() {
+        return file;
+    }
+
     @Override
     public String toString() {
         StringBuilder buf = new StringBuilder("unix:");

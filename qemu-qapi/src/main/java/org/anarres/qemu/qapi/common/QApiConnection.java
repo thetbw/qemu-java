@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import org.anarres.qemu.qapi.api.VersionInfo;
+import org.newsclub.net.unix.AFUNIXSocketAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,9 +55,10 @@ public class QApiConnection implements Closeable {
     public QApiConnection(@Nonnull String address, @Nonnegative int port) throws IOException {
         this(InetAddress.getByName(address), port);
     }
-
     public QApiConnection(@Nonnull InetSocketAddress address) throws IOException {
-        this(address.getAddress(), address.getPort());
+        this(address instanceof AFUNIXSocketAddress
+                ? ((AFUNIXSocketAddress) address).newConnectedSocket()
+                : new Socket(address.getAddress(), address.getPort()));
     }
 
     @Nonnull

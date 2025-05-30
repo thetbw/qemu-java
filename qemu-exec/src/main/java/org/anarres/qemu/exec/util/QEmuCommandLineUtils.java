@@ -5,6 +5,7 @@
 package org.anarres.qemu.exec.util;
 
 import java.net.InetSocketAddress;
+import java.net.SocketException;
 import java.util.UUID;
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
@@ -13,7 +14,9 @@ import org.anarres.qemu.exec.QEmuCommandLine;
 import org.anarres.qemu.exec.QEmuIdOption;
 import org.anarres.qemu.exec.QEmuMonitorOption;
 import org.anarres.qemu.exec.host.chardev.TcpCharDevice;
+import org.anarres.qemu.exec.host.chardev.UnixCharDevice;
 import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
+import org.newsclub.net.unix.AFUNIXSocketAddress;
 
 /**
  *
@@ -40,6 +43,14 @@ public class QEmuCommandLineUtils {
                 if (chardevOption.device instanceof TcpCharDevice) {
                     TcpCharDevice tcpDevice = (TcpCharDevice) chardevOption.device;
                     return tcpDevice.getAddress();
+                }
+                if (chardevOption.device instanceof UnixCharDevice) {
+                    UnixCharDevice unixDevice = (UnixCharDevice) chardevOption.device;
+                    try {
+                        return AFUNIXSocketAddress.of(unixDevice.getFile());
+                    } catch (SocketException e) {
+                        return null;
+                    }
                 }
             }
         }

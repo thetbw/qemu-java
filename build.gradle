@@ -18,8 +18,11 @@ subprojects {
         implementation "org.slf4j:slf4j-api:1.7.12"
         implementation "com.google.guava:guava:18.0"
         implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
+        implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.10.1'
+
         testImplementation platform('org.junit:junit-bom:5.10.0')
         testImplementation 'org.junit.jupiter:junit-jupiter'
+        testImplementation 'org.slf4j:slf4j-simple:2.0.9'
     }
 
     test {
@@ -120,7 +123,6 @@ project(':qemu-exec') {
     dependencies {
         implementation project(':qemu-image')
         implementation 'org.codehaus.mojo:animal-sniffer-annotations:1.14'
-
         // Can be changed to qemu-qapi when we move QEmuProcess to qemu-exec.
         testImplementation project(':qemu-qapi')
         testImplementation project(':qemu-manager')
